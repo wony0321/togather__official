@@ -1,0 +1,22 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+dist/
+dist-ssr/
+
+# Editor directories
+.vscode/
+.idea/
+.DS_Store
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Vite
+*.local
