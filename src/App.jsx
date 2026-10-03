@@ -6,6 +6,7 @@ import PrivateRoute from "@/router/PrivateRoute";
 import Home from "@/pages/Home/Home";
 import Service from "@/pages/Service/Service";
 import Pricing from "@/pages/Pricing/Pricing";
+import Guide from "@/pages/Guide/Guide";
 import Team from "@/pages/Team/Team";
 import Contact from "@/pages/Contact/Contact";
 
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "service", element: <Service /> },
       { path: "pricing", element: <Pricing /> },
+      { path: "guide", element: <Guide /> },
       { path: "team", element: <Team /> },
       { path: "contact", element: <Contact /> },
     ],

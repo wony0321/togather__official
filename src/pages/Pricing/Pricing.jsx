@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { Check, X } from "lucide-react";
 import { pricingPlans, setupFee } from "@/data/pricing";
 
 export default function Pricing() {
@@ -6,9 +7,9 @@ export default function Pricing() {
     <div>
       <section className="py-20 px-6 bg-gradient-to-br from-blue-1 to-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold text-blue-10 mb-4">투명한 요금제</h1>
-          <p className="text-bluegrey-7 text-lg max-w-xl mx-auto">
-            조직 규모와 필요에 맞는 요금제를 선택하세요.
+          <h1 className="text-4xl font-bold text-blue-10 mb-4">우리 교회에 맞는 요금제를 확인해 보세요</h1>
+          <p className="text-grey-8 text-lg max-w-xl mx-auto">
+            교인 수와 필요한 기능에 따라 요금이 달라집니다.
             초기 개설 비용 <strong className="text-primary">{setupFee.toLocaleString()}원</strong> + 월 구독료로 시작합니다.
           </p>
         </div>
@@ -34,12 +35,12 @@ export default function Pricing() {
 
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-blue-9">{plan.name}</h3>
-                  <p className="text-sm text-bluegrey-6 mt-1">{plan.description}</p>
+                  <p className="text-sm text-grey-8 mt-1">{plan.description}</p>
                   <div className="mt-4 flex items-baseline gap-1">
                     <span className="text-3xl font-bold text-blue-10">
                       {plan.price.toLocaleString()}원
                     </span>
-                    <span className="text-bluegrey-6 text-sm">/ {plan.priceUnit}</span>
+                    <span className="text-grey-8 text-sm">/ {plan.priceUnit}</span>
                   </div>
                 </div>
 
@@ -47,9 +48,9 @@ export default function Pricing() {
                   {plan.features.map(({ text, included }) => (
                     <li key={text} className="flex items-center gap-2 text-sm">
                       {included ? (
-                        <span className="text-primary shrink-0">✓</span>
+                        <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={2.5} />
                       ) : (
-                        <span className="text-grey-5 shrink-0">✕</span>
+                        <X className="w-4 h-4 text-grey-5 shrink-0" strokeWidth={2.5} />
                       )}
                       <span className={included ? "text-blue-8" : "text-grey-6"}>{text}</span>
                     </li>
@@ -72,9 +73,9 @@ export default function Pricing() {
 
           {/* Custom */}
           <div className="mt-8 text-center p-8 bg-blue-1 rounded-2xl border border-blue-2">
-            <h3 className="font-bold text-blue-9 text-lg mb-2">맞춤형 요금제</h3>
-            <p className="text-bluegrey-7 text-sm mb-4">
-              교인 수, 조직 규모, 필요 기능에 따라 맞춤형 플랜을 제공합니다.
+            <h3 className="font-bold text-blue-9 text-lg mb-2">맞춤 요금 안내</h3>
+            <p className="text-grey-8 text-sm mb-4">
+              교인 수, 필요 기능, 기존 자료의 양에 따라 우리 교회에 맞는 비용을 안내해 드립니다.
             </p>
             <Link
               to="/contact"
@@ -111,7 +112,7 @@ export default function Pricing() {
             ].map(({ q, a }) => (
               <div key={q} className="bg-white rounded-xl border border-bluegrey-2 p-6">
                 <h4 className="font-semibold text-blue-9 mb-2">{q}</h4>
-                <p className="text-sm text-bluegrey-7">{a}</p>
+                <p className="text-sm text-grey-8">{a}</p>
               </div>
             ))}
           </div>

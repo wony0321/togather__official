@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { Inbox, Clock, Building2, Sparkle } from "lucide-react";
 import { inquiryApi, clientApi } from "@/services/api";
 
 const statCards = [
-  { label: "전체 문의", key: "totalInquiries", icon: "📬" },
-  { label: "미처리 문의", key: "pendingInquiries", icon: "⏳" },
-  { label: "활성 고객사", key: "activeClients", icon: "🏛️" },
-  { label: "이번 달 신규", key: "newThisMonth", icon: "🆕" },
+  { label: "전체 문의", key: "totalInquiries", icon: Inbox },
+  { label: "미처리 문의", key: "pendingInquiries", icon: Clock },
+  { label: "활성 고객사", key: "activeClients", icon: Building2 },
+  { label: "이번 달 신규", key: "newThisMonth", icon: Sparkle },
 ];
 
 const statusMap = {
   pending: { label: "대기", className: "bg-yellow-100 text-yellow-700" },
   inProgress: { label: "진행중", className: "bg-blue-2 text-blue-7" },
   completed: { label: "완료", className: "bg-green-100 text-green-700" },
-  cancelled: { label: "취소", className: "bg-bluegrey-2 text-bluegrey-7" },
+  cancelled: { label: "취소", className: "bg-bluegrey-2 text-grey-8" },
 };
 
 export default function Dashboard() {
@@ -59,20 +60,20 @@ export default function Dashboard() {
     <div>
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-blue-10">대시보드</h1>
-        <p className="text-bluegrey-6 text-sm mt-1">ToGather 운영 현황을 한눈에 확인하세요.</p>
+        <p className="text-grey-8 text-sm mt-1">ToGather 운영 현황을 한눈에 확인하세요.</p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-        {statCards.map(({ label, key, icon }) => (
+        {statCards.map(({ label, key, icon: Icon }) => (
           <div key={key} className="bg-white rounded-2xl border border-bluegrey-2 p-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-2xl">{icon}</span>
+              <Icon className="w-6 h-6 text-primary" strokeWidth={1.75} />
               <span className="text-2xl font-bold text-blue-9">
                 {loading ? "..." : stats[key]}
               </span>
             </div>
-            <p className="text-sm text-bluegrey-6">{label}</p>
+            <p className="text-sm text-grey-8">{label}</p>
           </div>
         ))}
       </div>
@@ -93,21 +94,21 @@ export default function Dashboard() {
           <table className="w-full text-sm">
             <thead className="bg-bluegrey-1 border-b border-bluegrey-2">
               <tr>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">조직명</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">담당자</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">요금제</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">상태</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">접수일</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">조직명</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">담당자</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">요금제</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">상태</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">접수일</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-bluegrey-1">
               {recentInquiries.map((inq) => (
                 <tr key={inq.id} className="hover:bg-blue-1">
                   <td className="px-6 py-3 font-medium text-blue-9">{inq.orgName}</td>
-                  <td className="px-6 py-3 text-bluegrey-7">{inq.contactName}</td>
-                  <td className="px-6 py-3 text-bluegrey-7">{inq.plan || "-"}</td>
+                  <td className="px-6 py-3 text-grey-8">{inq.contactName}</td>
+                  <td className="px-6 py-3 text-grey-8">{inq.plan || "-"}</td>
                   <td className="px-6 py-3">
-                    <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${statusMap[inq.status]?.className || "bg-bluegrey-2 text-bluegrey-7"}`}>
+                    <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${statusMap[inq.status]?.className || "bg-bluegrey-2 text-grey-8"}`}>
                       {statusMap[inq.status]?.label || inq.status}
                     </span>
                   </td>

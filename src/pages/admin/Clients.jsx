@@ -31,7 +31,7 @@ export default function Clients() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-blue-10">고객사 관리</h1>
-          <p className="text-bluegrey-6 text-sm mt-1">총 {clients.length}개 고객사</p>
+          <p className="text-grey-8 text-sm mt-1">총 {clients.length}개 고객사</p>
         </div>
         <input
           type="text"
@@ -53,20 +53,20 @@ export default function Clients() {
           <table className="w-full text-sm">
             <thead className="bg-bluegrey-1 border-b border-bluegrey-2">
               <tr>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">조직명</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">유형</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">담당자</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">요금제</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">상태</th>
-                <th className="text-left px-6 py-3 font-medium text-bluegrey-7">시작일</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">조직명</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">유형</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">담당자</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">요금제</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">상태</th>
+                <th className="text-left px-6 py-3 font-medium text-grey-8">시작일</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-bluegrey-1">
               {filtered.map((client) => (
                 <tr key={client.id} className="hover:bg-blue-1">
                   <td className="px-6 py-3 font-medium text-blue-9">{client.name}</td>
-                  <td className="px-6 py-3 text-bluegrey-7">{client.orgType || "-"}</td>
-                  <td className="px-6 py-3 text-bluegrey-7">{client.contactName}</td>
+                  <td className="px-6 py-3 text-grey-8">{client.orgType || "-"}</td>
+                  <td className="px-6 py-3 text-grey-8">{client.contactName}</td>
                   <td className="px-6 py-3">
                     <span className="px-2 py-0.5 bg-blue-2 text-blue-7 rounded-full text-xs font-medium">
                       {client.plan}
@@ -74,7 +74,7 @@ export default function Clients() {
                   </td>
                   <td className="px-6 py-3">
                     <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                      client.active ? "bg-green-100 text-green-700" : "bg-bluegrey-2 text-bluegrey-6"
+                      client.active ? "bg-green-100 text-green-700" : "bg-bluegrey-2 text-grey-8"
                     }`}>
                       {client.active ? "활성" : "비활성"}
                     </span>

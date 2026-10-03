@@ -7,7 +7,7 @@ export const pricingPlans = [
     nameEn: "Basic",
     price: 29900,
     priceUnit: "월",
-    description: "소규모 조직의 디지털 전환을 위한 필수 패키지",
+    description: "홈페이지, 공지·일정과 기본 교인 관리부터 시작하는 교회",
     badge: null,
     features: [
       { text: "반응형 조직 웹앱", included: true },
@@ -30,7 +30,7 @@ export const pricingPlans = [
     nameEn: "Standard",
     price: 39900,
     priceUnit: "월",
-    description: "성장하는 조직을 위한 확장된 운영 기능",
+    description: "행사 신청·결제, 영수증과 고급 교인 관리 기능이 필요한 교회",
     badge: "인기",
     features: [
       { text: "반응형 조직 웹앱", included: true },
@@ -53,7 +53,7 @@ export const pricingPlans = [
     nameEn: "Premium",
     price: 59900,
     priceUnit: "월",
-    description: "완전한 디지털 운영 자동화가 필요한 조직",
+    description: "업무 자동화, 통계와 전담 지원까지 필요한 교회",
     badge: null,
     features: [
       { text: "반응형 조직 웹앱", included: true },

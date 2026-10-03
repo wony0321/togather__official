@@ -2,10 +2,10 @@ import { Link, NavLink } from "react-router";
 import useUIStore from "@/store/uiStore";
 
 const navLinks = [
-  { to: "/service", label: "서비스" },
-  { to: "/pricing", label: "요금제" },
-  { to: "/team", label: "팀 소개" },
-  { to: "/contact", label: "도입 문의" },
+  { to: "/service", label: "서비스 소개" },
+  { to: "/pricing", label: "요금 안내" },
+  { to: "/guide", label: "도입 방법" },
+  { to: "/team", label: "회사 소개" },
 ];
 
 export default function Header() {
@@ -26,7 +26,11 @@ export default function Header() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors ${isActive ? "text-primary" : "text-bluegrey-7 hover:text-blue-8"}`
+                `text-sm font-medium pb-1 border-b-2 transition-colors ${
+                  isActive
+                    ? "text-primary font-bold border-primary"
+                    : "text-grey-8 border-transparent hover:text-blue-8 hover:font-bold"
+                }`
               }
             >
               {label}
@@ -36,13 +40,13 @@ export default function Header() {
             to="/contact"
             className="ml-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-blue-7 transition-colors"
           >
-            무료 상담
+            도입 문의
           </Link>
         </nav>
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-md text-bluegrey-6 hover:bg-blue-1"
+          className="md:hidden p-2 rounded-md text-grey-8 hover:bg-blue-1"
           onClick={toggleMenu}
           aria-label="메뉴 열기"
         >
@@ -62,7 +66,7 @@ export default function Header() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `text-sm font-medium ${isActive ? "text-primary" : "text-bluegrey-8"}`
+                `text-sm font-medium ${isActive ? "text-primary font-semibold underline" : "text-bluegrey-8"}`
               }
               onClick={closeMenu}
             >
@@ -74,7 +78,7 @@ export default function Header() {
             className="mt-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg text-center"
             onClick={closeMenu}
           >
-            무료 상담
+            도입 문의
           </Link>
         </div>
       )}

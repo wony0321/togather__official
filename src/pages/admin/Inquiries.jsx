@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 import { inquiryApi } from "@/services/api";
 import useInquiryStore from "@/store/inquiryStore";
 
@@ -14,7 +15,7 @@ const statusMap = {
   pending: { label: "대기", className: "bg-yellow-100 text-yellow-700" },
   inProgress: { label: "진행중", className: "bg-blue-2 text-blue-7" },
   completed: { label: "완료", className: "bg-green-100 text-green-700" },
-  cancelled: { label: "취소", className: "bg-bluegrey-2 text-bluegrey-7" },
+  cancelled: { label: "취소", className: "bg-bluegrey-2 text-grey-8" },
 };
 
 export default function Inquiries() {
@@ -55,7 +56,7 @@ export default function Inquiries() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-blue-10">문의 관리</h1>
-            <p className="text-bluegrey-6 text-sm mt-1">총 {inquiries.length}건의 문의</p>
+            <p className="text-grey-8 text-sm mt-1">총 {inquiries.length}건의 문의</p>
           </div>
           <select
             value={filterStatus}
@@ -77,11 +78,11 @@ export default function Inquiries() {
             <table className="w-full text-sm">
               <thead className="bg-bluegrey-1 border-b border-bluegrey-2">
                 <tr>
-                  <th className="text-left px-5 py-3 font-medium text-bluegrey-7">조직명</th>
-                  <th className="text-left px-5 py-3 font-medium text-bluegrey-7">유형</th>
-                  <th className="text-left px-5 py-3 font-medium text-bluegrey-7">요금제</th>
-                  <th className="text-left px-5 py-3 font-medium text-bluegrey-7">상태</th>
-                  <th className="text-left px-5 py-3 font-medium text-bluegrey-7">접수일</th>
+                  <th className="text-left px-5 py-3 font-medium text-grey-8">교회명</th>
+                  <th className="text-left px-5 py-3 font-medium text-grey-8">지역</th>
+                  <th className="text-left px-5 py-3 font-medium text-grey-8">요금제</th>
+                  <th className="text-left px-5 py-3 font-medium text-grey-8">상태</th>
+                  <th className="text-left px-5 py-3 font-medium text-grey-8">접수일</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-bluegrey-1">
@@ -92,14 +93,14 @@ export default function Inquiries() {
                     onClick={() => selectInquiry(inq)}
                   >
                     <td className="px-5 py-3 font-medium text-blue-9">{inq.orgName}</td>
-                    <td className="px-5 py-3 text-bluegrey-7">{inq.orgType || "-"}</td>
-                    <td className="px-5 py-3 text-bluegrey-7">{inq.plan || "-"}</td>
+                    <td className="px-5 py-3 text-grey-8">{inq.region || "-"}</td>
+                    <td className="px-5 py-3 text-grey-8">{inq.plan || "-"}</td>
                     <td className="px-5 py-3">
                       <select
                         value={inq.status}
                         onChange={(e) => { e.stopPropagation(); handleStatusChange(inq.id, e.target.value); }}
                         onClick={(e) => e.stopPropagation()}
-                        className={`px-2 py-1 rounded-lg text-xs font-medium border-0 focus:outline-none focus:ring-1 focus:ring-primary ${statusMap[inq.status]?.className || "bg-bluegrey-2 text-bluegrey-7"}`}
+                        className={`px-2 py-1 rounded-lg text-xs font-medium border-0 focus:outline-none focus:ring-1 focus:ring-primary ${statusMap[inq.status]?.className || "bg-bluegrey-2 text-grey-8"}`}
                       >
                         {statusOptions.slice(1).map(({ value, label }) => (
                           <option key={value} value={value}>{label}</option>
@@ -123,16 +124,23 @@ export default function Inquiries() {
           <div className="bg-white rounded-2xl border border-bluegrey-2 p-6 sticky top-4">
             <div className="flex items-start justify-between mb-4">
               <h2 className="font-bold text-blue-9">{selectedInquiry.orgName}</h2>
-              <button onClick={() => selectInquiry(null)} className="text-bluegrey-5 hover:text-bluegrey-8 text-lg">✕</button>
+              <button onClick={() => selectInquiry(null)} className="text-bluegrey-5 hover:text-bluegrey-8" aria-label="닫기">
+                <X className="w-5 h-5" strokeWidth={2} />
+              </button>
             </div>
             <dl className="space-y-3 text-sm">
               {[
-                { label: "조직 유형", value: selectedInquiry.orgType },
+                { label: "지역", value: selectedInquiry.region },
+                { label: "교단", value: selectedInquiry.denomination },
+                { label: "교인 수", value: selectedInquiry.memberCount },
                 { label: "담당자", value: selectedInquiry.contactName },
+                { label: "직분·맡은 일", value: selectedInquiry.position },
                 { label: "이메일", value: selectedInquiry.email },
                 { label: "연락처", value: selectedInquiry.phone },
-                { label: "구성원 수", value: selectedInquiry.memberCount },
                 { label: "관심 요금제", value: selectedInquiry.plan },
+                { label: "현재 교회 홈페이지", value: selectedInquiry.currentWebsite },
+                { label: "현재 교인 관리 방법", value: selectedInquiry.currentManagementMethod },
+                { label: "문의 유형", value: selectedInquiry.inquiryType },
               ].map(({ label, value }) => value && (
                 <div key={label}>
                   <dt className="text-bluegrey-5">{label}</dt>

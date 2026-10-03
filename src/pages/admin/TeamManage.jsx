@@ -62,7 +62,7 @@ export default function TeamManage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-blue-10">팀원 관리</h1>
-          <p className="text-bluegrey-6 text-sm mt-1">총 {members.length}명</p>
+          <p className="text-grey-8 text-sm mt-1">총 {members.length}명</p>
         </div>
         <button
           onClick={openNew}
@@ -88,7 +88,7 @@ export default function TeamManage() {
               <div className="flex gap-2">
                 <button
                   onClick={() => openEdit(member)}
-                  className="px-3 py-1 text-xs text-bluegrey-7 border border-bluegrey-3 rounded-lg hover:bg-bluegrey-1"
+                  className="px-3 py-1 text-xs text-grey-8 border border-bluegrey-3 rounded-lg hover:bg-bluegrey-1"
                 >
                   편집
                 </button>
@@ -100,7 +100,7 @@ export default function TeamManage() {
                 </button>
               </div>
             </div>
-            <p className="text-sm text-bluegrey-7 leading-relaxed">{member.bio}</p>
+            <p className="text-sm text-grey-8 leading-relaxed">{member.bio}</p>
             {member.email && (
               <p className="text-xs text-bluegrey-5 mt-2">{member.email}</p>
             )}

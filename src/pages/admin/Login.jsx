@@ -35,7 +35,7 @@ export default function AdminLogin() {
         <div className="text-center mb-8">
           <img src="/icons/192x192.png" alt="ToGather" className="w-12 h-12 rounded-xl mx-auto mb-3" />
           <span className="text-2xl font-bold text-primary">ToGather</span>
-          <p className="text-sm text-bluegrey-6 mt-1">관리자 로그인</p>
+          <p className="text-sm text-grey-8 mt-1">관리자 로그인</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

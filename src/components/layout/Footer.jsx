@@ -11,8 +11,7 @@ export default function Footer() {
               <span className="text-white font-bold text-lg">ToGather</span>
             </div>
             <p className="mt-2 text-sm leading-relaxed">
-              중·소규모 조직을 위한<br />
-              All-in-One 디지털 플랫폼.
+              교회 운영을 하나로, 성도와 더 가까이
             </p>
           </div>
 
@@ -28,7 +27,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-sm font-semibold mb-3">회사</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/team" className="hover:text-white transition-colors">팀 소개</Link></li>
+              <li><Link to="/team" className="hover:text-white transition-colors">회사 소개</Link></li>
               <li><a href="mailto:hello@togather.kr" className="hover:text-white transition-colors">hello@togather.kr</a></li>
             </ul>
           </div>

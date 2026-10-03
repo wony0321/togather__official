@@ -1,11 +1,12 @@
 import { NavLink, useNavigate } from "react-router";
+import { LayoutDashboard, Inbox, Building2, Users, LogOut } from "lucide-react";
 import useAuthStore from "@/store/authStore";
 
 const navItems = [
-  { to: "/admin", label: "대시보드", icon: "📊", end: true },
-  { to: "/admin/inquiries", label: "문의 관리", icon: "📬" },
-  { to: "/admin/clients", label: "고객사 관리", icon: "🏛️" },
-  { to: "/admin/team", label: "팀원 관리", icon: "👥" },
+  { to: "/admin", label: "대시보드", icon: LayoutDashboard, end: true },
+  { to: "/admin/inquiries", label: "문의 관리", icon: Inbox },
+  { to: "/admin/clients", label: "고객사 관리", icon: Building2 },
+  { to: "/admin/team", label: "팀원 관리", icon: Users },
 ];
 
 export default function AdminSidebar() {
@@ -28,7 +29,7 @@ export default function AdminSidebar() {
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-1">
-        {navItems.map(({ to, label, icon, end }) => (
+        {navItems.map(({ to, label, icon: Icon, end }) => (
           <NavLink
             key={to}
             to={to}
@@ -41,7 +42,7 @@ export default function AdminSidebar() {
               }`
             }
           >
-            <span>{icon}</span>
+            <Icon className="w-5 h-5" strokeWidth={2} />
             {label}
           </NavLink>
         ))}
@@ -56,7 +57,7 @@ export default function AdminSidebar() {
           onClick={handleLogout}
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-blue-4 hover:bg-blue-8 hover:text-white transition-colors"
         >
-          <span>🚪</span>
+          <LogOut className="w-5 h-5" strokeWidth={2} />
           로그아웃
         </button>
       </div>
