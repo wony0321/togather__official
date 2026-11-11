@@ -18,16 +18,16 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-sm font-semibold mb-3">서비스</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/service" className="hover:text-white transition-colors">서비스 소개</Link></li>
-              <li><Link to="/pricing" className="hover:text-white transition-colors">요금제</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">도입 문의</Link></li>
+              <li><a href="#service" className="hover:text-white transition-colors">서비스 소개</a></li>
+              <li><a href="#pricing" className="hover:text-white transition-colors">요금제</a></li>
+              <li><a href="#contact" className="hover:text-white transition-colors">도입 문의</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white text-sm font-semibold mb-3">회사</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/team" className="hover:text-white transition-colors">회사 소개</Link></li>
+              <li><a href="#team" className="hover:text-white transition-colors">회사 소개</a></li>
               <li><a href="mailto:hello@togather.kr" className="hover:text-white transition-colors">hello@togather.kr</a></li>
             </ul>
           </div>

@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { Landmark, Megaphone, UserCheck, BookOpen, Building2, Users, Globe, Sprout, ParkingSquare, TrainFront, Bus } from "lucide-react";
 
 const setupInfoCategories = [
@@ -84,17 +83,17 @@ const steps = [
 
 export default function Guide() {
   return (
-    <div>
-      <section className="py-20 px-6 bg-gradient-to-br from-blue-1 to-white">
+    <section id="guide" className="scroll-mt-16">
+      <div className="py-20 px-6 bg-bluegrey-1">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-blue-10 mb-4">도입 방법</h1>
           <p className="text-grey-8 text-lg max-w-2xl mx-auto">
             문의부터 오픈까지, 평균 3일이면 우리 교회에 맞는 플랫폼을 시작할 수 있습니다.
           </p>
         </div>
-      </section>
+      </div>
 
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-bluegrey-1">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
             {steps.map(({ step, title, description }, index) => (
@@ -145,19 +144,6 @@ export default function Guide() {
           </p>
         </div>
       </section>
-
-      <section className="py-16 px-6 bg-primary text-center">
-        <h2 className="text-2xl font-bold text-white mb-4">지금 도입을 시작해 보세요</h2>
-        <p className="text-pale mb-8">적합한 도입 방법과 예상 비용을 바로 안내해 드립니다.</p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/contact" className="px-8 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-blue-1 transition-colors">
-            도입 문의
-          </Link>
-          <Link to="/pricing" className="px-8 py-3 bg-blue-6 text-white font-semibold rounded-xl border border-blue-5 hover:bg-blue-5 transition-colors">
-            예상 비용 확인하기
-          </Link>
-        </div>
-      </section>
-    </div>
+    </section>
   );
 }

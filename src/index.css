@@ -1,5 +1,86 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bluegrey-1);
+}
+
+@property --border-sweep-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-sweep {
+  from {
+    --border-sweep-angle: 0deg;
+  }
+  to {
+    --border-sweep-angle: 360deg;
+  }
+}
+
+.pricing-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from calc(-45deg + var(--border-sweep-angle, 0deg)),
+    transparent 0%,
+    transparent 70%,
+    var(--sweep-color) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.pricing-card:hover::before {
+  opacity: 1;
+  animation: border-sweep 1.2s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes float-badge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.floating-badge {
+  animation: float-badge 4s ease-in-out infinite;
+}
+
 @theme {
   /* ----------------------------------------------------------
      FONTS

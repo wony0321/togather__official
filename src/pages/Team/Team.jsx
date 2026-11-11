@@ -35,8 +35,8 @@ function MemberCard({ member }) {
 
 export default function Team() {
   return (
-    <div>
-      <section className="py-20 px-6 bg-gradient-to-br from-blue-1 to-white">
+    <section id="team" className="scroll-mt-16">
+      <div className="py-20 px-6 bg-bluegrey-1">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-blue-10 mb-4">ToGather 소개</h1>
           <p className="text-grey-8 text-lg max-w-2xl mx-auto">
@@ -45,10 +45,10 @@ export default function Team() {
             교회 운영을 한곳에 모아 모두가 같은 소식을 나누고 함께 참여할 수 있도록 돕습니다.
           </p>
         </div>
-      </section>
+      </div>
 
       {/* Mission & Vision */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-bluegrey-1">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="rounded-2xl border border-blue-2 bg-blue-1 p-8">
             <h2 className="font-bold text-primary text-lg mb-3">투게더는 연결합니다</h2>
@@ -66,7 +66,7 @@ export default function Team() {
       </section>
 
       {/* Team cards */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-bluegrey-1">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <MemberCard member={teamMembers[0]} />
@@ -81,34 +81,6 @@ export default function Team() {
           </div>
         </div>
       </section>
-
-      {/* Partners */}
-      <section className="py-16 px-6 bg-blue-1">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-blue-10 mb-3">협력 파트너</h2>
-          <p className="text-grey-8 mb-8">
-            ToGather는 콘텐츠·미디어 채널과 협력하여 서비스 확산 기반을 마련하고 있습니다.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            {["GOODTV", "CBS"].map((partner) => (
-              <div key={partner} className="px-8 py-4 bg-white rounded-xl border border-blue-2 font-semibold text-blue-8">
-                {partner}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="py-16 px-6 bg-primary text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-white mb-4">우리의 미션</h2>
-          <p className="text-pale text-lg leading-relaxed">
-            "교회 운영을 하나로,<br />
-            성도와 더 가까이"
-          </p>
-        </div>
-      </section>
-    </div>
+    </section>
   );
 }

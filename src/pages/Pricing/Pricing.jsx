@@ -1,39 +1,47 @@
-import { Link } from "react-router";
-import { Check, X } from "lucide-react";
-import { pricingPlans, setupFee } from "@/data/pricing";
+import { Check } from "lucide-react";
+import { pricingPlans, commonFeatures } from "@/data/pricing";
+
+const tierStyle = {
+  basic: "bg-blue-1 text-blue-7",
+  standard: "bg-primary text-white",
+  premium: "bg-blue-9 text-white",
+};
+
+const tierSweepColor = {
+  basic: "var(--color-blue-3)",
+  standard: "var(--color-primary)",
+  premium: "var(--color-blue-9)",
+};
 
 export default function Pricing() {
   return (
-    <div>
-      <section className="py-20 px-6 bg-gradient-to-br from-blue-1 to-white">
+    <section id="pricing" className="scroll-mt-16">
+      <div className="pt-20 px-6 bg-bluegrey-1">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-blue-10 mb-4">우리 교회에 맞는 요금제를 확인해 보세요</h1>
           <p className="text-grey-8 text-lg max-w-xl mx-auto">
-            교인 수와 필요한 기능에 따라 요금이 달라집니다.
-            초기 개설 비용 <strong className="text-primary">{setupFee.toLocaleString()}원</strong> + 월 구독료로 시작합니다.
+            교인 수에 따라 요금제와 초기 개설비가 달라집니다.
+          </p>
+          <p className="text-bluegrey-5 text-sm mt-2">
+            ※ 소규모 교회의 사역을 돕고자 교인 100명 이하 교회는 초기 개설비를 받지 않습니다.
           </p>
         </div>
-      </section>
+      </div>
 
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-bluegrey-1">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {pricingPlans.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-2xl border-2 p-8 flex flex-col ${
-                  plan.highlighted
-                    ? "border-primary shadow-xl shadow-blue-2"
-                    : "border-bluegrey-2"
-                }`}
+                className="pricing-card relative rounded-2xl border-2 border-bluegrey-2 p-8 flex flex-col"
+                style={{ "--sweep-color": tierSweepColor[plan.id] }}
               >
-                {plan.badge && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-xs font-bold rounded-full">
-                    {plan.badge}
-                  </span>
-                )}
+                <span className={`inline-block self-start px-3 py-1 rounded-full text-sm font-bold mb-4 ${tierStyle[plan.id]}`}>
+                  교인 {plan.memberRange}
+                </span>
 
-                <div className="mb-6">
+                <div className="mb-8 flex-1">
                   <h3 className="text-xl font-bold text-blue-9">{plan.name}</h3>
                   <p className="text-sm text-grey-8 mt-1">{plan.description}</p>
                   <div className="mt-4 flex items-baseline gap-1">
@@ -42,48 +50,41 @@ export default function Pricing() {
                     </span>
                     <span className="text-grey-8 text-sm">/ {plan.priceUnit}</span>
                   </div>
+                  {plan.setupFee === 0 ? (
+                    <div className="mt-2 text-sm text-grey-8">
+                      초기 개설비 <span className="text-primary font-bold">무료</span>
+                    </div>
+                  ) : (
+                    <div className="mt-2 text-sm text-grey-8">
+                      초기 개설비{" "}
+                      <span className="text-blue-9 font-semibold">{plan.setupFee.toLocaleString()}원</span>
+                    </div>
+                  )}
                 </div>
 
-                <ul className="space-y-2.5 flex-1 mb-8">
-                  {plan.features.map(({ text, included }) => (
-                    <li key={text} className="flex items-center gap-2 text-sm">
-                      {included ? (
-                        <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={2.5} />
-                      ) : (
-                        <X className="w-4 h-4 text-grey-5 shrink-0" strokeWidth={2.5} />
-                      )}
-                      <span className={included ? "text-blue-8" : "text-grey-6"}>{text}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  to="/contact"
-                  className={`block text-center py-3 rounded-xl font-semibold text-sm transition-colors ${
-                    plan.highlighted
-                      ? "bg-primary text-white hover:bg-blue-7"
-                      : "bg-blue-1 text-blue-8 hover:bg-blue-2"
-                  }`}
+                <a
+                  href="#contact"
+                  className="block text-center py-3 rounded-xl font-semibold text-sm bg-blue-1 text-blue-8 hover:bg-blue-2 transition-colors"
                 >
                   {plan.cta}
-                </Link>
+                </a>
               </div>
             ))}
           </div>
 
-          {/* Custom */}
-          <div className="mt-8 text-center p-8 bg-blue-1 rounded-2xl border border-blue-2">
-            <h3 className="font-bold text-blue-9 text-lg mb-2">맞춤 요금 안내</h3>
-            <p className="text-grey-8 text-sm mb-4">
-              교인 수, 필요 기능, 기존 자료의 양에 따라 우리 교회에 맞는 비용을 안내해 드립니다.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-block px-6 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-blue-7 transition-colors text-sm"
-            >
-              별도 상담 문의
-            </Link>
+          {/* Common features */}
+          <div className="mt-8 p-8 bg-white rounded-2xl border border-bluegrey-2">
+            <h3 className="font-bold text-blue-9 text-lg mb-5 text-center">모든 요금제 공통 제공 기능</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+              {commonFeatures.map((text) => (
+                <li key={text} className="flex items-center gap-2 text-sm text-blue-8">
+                  <Check className="w-4 h-4 text-primary shrink-0" strokeWidth={2.5} />
+                  {text}
+                </li>
+              ))}
+            </ul>
           </div>
+
         </div>
       </section>
 
@@ -118,6 +119,6 @@ export default function Pricing() {
           </div>
         </div>
       </section>
-    </div>
+    </section>
   );
 }

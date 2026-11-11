@@ -49,8 +49,8 @@ export default function Contact() {
   };
 
   return (
-    <div>
-      <section className="py-20 px-6 bg-gradient-to-br from-blue-1 to-white">
+    <section id="contact" className="scroll-mt-16">
+      <div className="py-20 px-6 bg-bluegrey-1">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-blue-10 mb-4">도입 문의</h1>
@@ -208,7 +208,7 @@ export default function Contact() {
             </form>
           )}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
