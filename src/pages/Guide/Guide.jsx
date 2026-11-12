@@ -1,4 +1,5 @@
-import { Landmark, Megaphone, UserCheck, BookOpen, Building2, Users, Globe, Sprout, ParkingSquare, TrainFront, Bus } from "lucide-react";
+import { useState } from "react";
+import { Landmark, Megaphone, UserCheck, BookOpen, Building2, Users, Globe, Sprout, ParkingSquare, TrainFront, Bus, FileSpreadsheet, Download } from "lucide-react";
 
 const setupInfoCategories = [
   {
@@ -15,6 +16,11 @@ const setupInfoCategories = [
     icon: UserCheck,
     title: "섬기는 사람들",
     items: "이름, 전화번호, 이메일, 직책(역할), 이미지, 학력",
+  },
+  {
+    icon: FileSpreadsheet,
+    title: "교적부 (교인 정보)",
+    items: "엑셀 양식에 맞춰 작성한 교인 명단 업로드 (이름, 생년월일, 연락처, 주소, 직분, 소속 부서 등)",
   },
   {
     icon: BookOpen,
@@ -82,9 +88,11 @@ const steps = [
 ];
 
 export default function Guide() {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <section id="guide" className="scroll-mt-16">
-      <div className="py-20 px-6 bg-bluegrey-1">
+      <div className="pt-20 px-6 bg-bluegrey-1">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-blue-10 mb-4">도입 방법</h1>
           <p className="text-grey-8 text-lg max-w-2xl mx-auto">
@@ -95,24 +103,62 @@ export default function Guide() {
 
       <section className="py-16 px-6 bg-bluegrey-1">
         <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
-            {steps.map(({ step, title, description }, index) => (
-              <div key={step} className="relative flex md:flex-col items-start md:items-center gap-4 md:gap-0 md:text-center">
-                {index !== steps.length - 1 && (
-                  <div className="md:hidden absolute left-6 top-12 h-[calc(100%+1.5rem)] w-0.5 bg-blue-2" aria-hidden="true" />
-                )}
-                {index !== steps.length - 1 && (
-                  <div className="hidden md:block absolute top-6 left-[calc(50%+1.5rem)] right-[calc(-50%+1.5rem)] h-0.5 bg-blue-2" aria-hidden="true" />
-                )}
-                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-primary text-white font-bold flex items-center justify-center md:mb-4">
-                  {index + 1}
+          <div
+            className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6"
+            onMouseLeave={() => setActiveStep(0)}
+          >
+            {steps.map(({ step, title, description }, index) => {
+              const isActive = index === activeStep;
+              return (
+                <div
+                  key={step}
+                  onMouseEnter={() => setActiveStep(index)}
+                  className="relative flex md:flex-col items-start md:items-center gap-4 md:gap-0 md:text-center"
+                >
+                  {index !== steps.length - 1 && (
+                    <div className="md:hidden absolute left-6 top-12 h-[calc(100%+1.5rem)] w-0.5 bg-blue-2 overflow-hidden" aria-hidden="true">
+                      <div
+                        className={`w-full h-full bg-primary origin-top transition-transform duration-500 ease-out ${
+                          isActive ? "scale-y-100" : "scale-y-0"
+                        }`}
+                      />
+                    </div>
+                  )}
+                  {index !== steps.length - 1 && (
+                    <div className="hidden md:block absolute top-6 left-[calc(50%+2.75rem)] right-[calc(-50%+1.25rem)] h-0.5 bg-blue-2 overflow-hidden" aria-hidden="true">
+                      <div
+                        className={`w-full h-full bg-primary origin-left transition-transform duration-500 ease-out ${
+                          isActive ? "scale-x-100" : "scale-x-0"
+                        }`}
+                      />
+                    </div>
+                  )}
+                  <div
+                    className={`relative z-10 shrink-0 w-12 h-12 rounded-full font-bold flex items-center justify-center md:mb-4 transition-colors duration-300 ${
+                      isActive ? "bg-primary text-white" : "bg-blue-2 text-blue-6"
+                    }`}
+                  >
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3
+                      className={`font-semibold mb-2 transition-colors duration-300 ${
+                        isActive ? "text-primary" : "text-bluegrey-6"
+                      }`}
+                    >
+                      {title}
+                    </h3>
+                    <p
+                      className={`text-sm leading-relaxed transition-colors duration-300 ${
+                        isActive ? "text-grey-8" : "text-bluegrey-4"
+                      }`}
+                    >
+                      {description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-blue-9 mb-2">{title}</h3>
-                  <p className="text-sm text-grey-8 leading-relaxed">{description}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -126,10 +172,18 @@ export default function Guide() {
               아래 항목을 미리 정리해 주시면 제작이 더 빨라집니다.
               입력해 주신 정보는 오픈 이후에도 관리자 페이지에서 언제든 직접 수정할 수 있습니다.
             </p>
+            <a
+              href="/downloads/church-setup-info-request.docx"
+              download="ToGather_교회_초기구축_정보요청서.docx"
+              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-blue-7 transition-colors text-sm"
+            >
+              <Download className="w-4 h-4" strokeWidth={2} />
+              정보요청서 양식 다운로드
+            </a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {setupInfoCategories.map(({ icon: Icon, title, items }) => (
-              <div key={title} className="bg-white rounded-2xl border border-bluegrey-2 p-5">
+              <div key={title} className="reveal-card bg-white rounded-2xl border border-bluegrey-2 p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <Icon className="w-5 h-5 text-primary" strokeWidth={1.75} />
                   <h3 className="font-semibold text-blue-9">{title}</h3>

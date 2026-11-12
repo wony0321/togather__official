@@ -1,10 +1,12 @@
+import { Smartphone, FileText, BookOpen, Megaphone, Users, Sparkles } from "lucide-react";
+
 export const commonFeatures = [
-  "반응형 조직 웹/앱",
-  "스마트 주보",
-  "성경 타자 (쓰기·읽기)",
-  "공지·행사·일정·사진 관리",
-  "교인 관리 (교적부)",
-  "검색 AI 브리핑",
+  { icon: Smartphone, text: "반응형 조직 웹/앱" },
+  { icon: FileText, text: "스마트 주보" },
+  { icon: BookOpen, text: "성경 타자 (쓰기·읽기)" },
+  { icon: Megaphone, text: "공지·행사·일정·사진 관리" },
+  { icon: Users, text: "교인 관리 (교적부)" },
+  { icon: Sparkles, text: "검색 AI 브리핑" },
 ];
 
 export const pricingPlans = [

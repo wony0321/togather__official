@@ -1,6 +1,6 @@
 import { X, Check } from "lucide-react";
 import Service from "@/pages/Service/Service";
-import Pricing from "@/pages/Pricing/Pricing";
+import Pricing, { PricingFaq } from "@/pages/Pricing/Pricing";
 import Guide from "@/pages/Guide/Guide";
 import Team from "@/pages/Team/Team";
 import Contact from "@/pages/Contact/Contact";
@@ -84,7 +84,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-blue-10 mb-4">흩어진 교회 업무를 한 곳에서</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-bluegrey-2 rounded-2xl p-6">
+            <div className="reveal-card bg-bluegrey-2 rounded-2xl p-6">
               <h3 className="font-semibold text-bluegrey-8 mb-4 text-lg flex items-center gap-2">
                 지금까지는
               </h3>
@@ -101,7 +101,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="bg-white border border-blue-6 rounded-2xl p-6">
+            <div className="reveal-card bg-white border border-blue-6 rounded-2xl p-6">
               <h3 className="font-semibold text-primary mb-4 text-lg flex items-center gap-2">
                 ToGather에서는
               </h3>
@@ -129,6 +129,7 @@ export default function Home() {
       <Guide />
       <Team />
       <Contact />
+      <PricingFaq />
     </div>
   );
 }

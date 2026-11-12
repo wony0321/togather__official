@@ -10,7 +10,7 @@ export default function Service() {
 
           <div className="grid md:grid-cols-3 gap-6 mb-14">
             {productFeatures.map(({ id, icon: Icon, title, description }) => (
-              <div key={id} className="rounded-2xl border-2 border-blue-2 p-6 bg-blue-1">
+              <div key={id} className="reveal-card rounded-2xl border-2 border-blue-2 p-6 bg-blue-1">
                 <Icon className="w-7 h-7 text-primary mb-3" strokeWidth={1.75} />
                 <h3 className="font-bold text-blue-9 mb-1">{title}</h3>
                 <p className="text-sm text-blue-8 leading-relaxed">{description}</p>
@@ -23,7 +23,7 @@ export default function Service() {
             {mainFeatures.map(({ id, icon: Icon, title, description }) => (
               <div
                 key={id}
-                className="p-6 rounded-2xl border border-bluegrey-2 bg-white hover:border-blue-3 hover:shadow-md transition-all"
+                className="reveal-card p-6 rounded-2xl border border-bluegrey-2 bg-white hover:border-blue-3 hover:shadow-md transition-all"
               >
                 <Icon className="w-8 h-8 text-primary mb-3" strokeWidth={1.75} />
                 <h3 className="font-semibold text-blue-9 mb-2">{title}</h3>
@@ -32,12 +32,12 @@ export default function Service() {
             ))}
 
             {/* 신규 기능 티저 (COMING SOON) - 주요 기능 카드와 함께 배치 */}
-            <div className="relative p-6 rounded-2xl bg-blue-9 flex flex-col justify-center">
-              <span className="absolute top-4 right-4 px-2 py-0.5 bg-white text-blue-9 text-xs font-bold rounded-full">
+            <div className="reveal-card relative p-6 rounded-2xl border border-bluegrey-2 bg-white hover:border-blue-3 hover:shadow-md transition-all flex flex-col justify-center">
+              <span className="absolute top-4 right-4 px-2 py-0.5 bg-blue-1 text-primary text-xs font-bold rounded-full">
                 COMING SOON
               </span>
-              <p className="text-blue-2 text-sm font-medium mb-1">같은 믿음으로, 조금 더 가까이</p>
-              <p className="text-white text-lg font-bold">ToGather 신규 기능 출시 임박!</p>
+              <p className="text-grey-8 text-sm font-medium mb-1">같은 믿음으로, 조금 더 가까이</p>
+              <p className="text-primary text-lg font-bold">ToGather 소개팅 플랫폼 출시 임박!</p>
             </div>
           </div>
         </div>

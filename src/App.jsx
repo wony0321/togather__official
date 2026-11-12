@@ -4,6 +4,8 @@ import AdminLayout from "@/layouts/AdminLayout";
 import PrivateRoute from "@/router/PrivateRoute";
 
 import Home from "@/pages/Home/Home";
+import Privacy from "@/pages/Privacy/Privacy";
+import Terms from "@/pages/Terms/Terms";
 
 import AdminLogin from "@/pages/admin/Login";
 import Dashboard from "@/pages/admin/Dashboard";
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
       { path: "guide", element: <Navigate to="/#guide" replace /> },
       { path: "team", element: <Navigate to="/#team" replace /> },
       { path: "contact", element: <Navigate to="/#contact" replace /> },
+      { path: "privacy", element: <Privacy /> },
+      { path: "terms", element: <Terms /> },
     ],
   },
   {

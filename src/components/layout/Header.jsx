@@ -29,12 +29,33 @@ function KakaoButton({ className, onClick }) {
 export default function Header() {
   const { isMenuOpen, toggleMenu, closeMenu } = useUIStore();
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = navLinks
+      .map(({ to }) => document.getElementById(to.slice(1)))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -62,7 +83,11 @@ export default function Header() {
             <a
               key={to}
               href={to}
-              className="text-sm font-medium text-grey-8 hover:text-blue-8 hover:font-bold transition-colors whitespace-nowrap"
+              className={`text-sm font-medium transition-colors whitespace-nowrap ${
+                activeSection === to.slice(1)
+                  ? "text-primary font-bold"
+                  : "text-grey-8 hover:text-blue-8 hover:font-bold"
+              }`}
             >
               {label}
             </a>
@@ -99,7 +124,9 @@ export default function Header() {
             <a
               key={to}
               href={to}
-              className="text-sm font-medium text-bluegrey-8"
+              className={`text-sm font-medium ${
+                activeSection === to.slice(1) ? "text-primary font-bold" : "text-bluegrey-8"
+              }`}
               onClick={closeMenu}
             >
               {label}

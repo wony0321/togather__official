@@ -50,7 +50,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="scroll-mt-16">
-      <div className="py-20 px-6 bg-bluegrey-1">
+      <div className="pt-20 px-6 bg-bluegrey-1">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-blue-10 mb-4">도입 문의</h1>

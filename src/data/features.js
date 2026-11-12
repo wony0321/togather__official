@@ -4,20 +4,20 @@ export const productFeatures = [
   {
     id: "admin",
     icon: Settings,
-    title: "교회 관리자 화면",
+    title: "관리자 모드",
     description: "교회 소식을 올리고, 교인 정보를 관리해요.",
-  },
-  {
-    id: "member-app",
-    icon: Smartphone,
-    title: "성도용 웹/앱",
-    description: "PC와 휴대폰에서 주보를 보고, 교회 소식을 바로바로 확인해요.",
   },
   {
     id: "church-site",
     icon: Landmark,
     title: "교회 홈페이지",
     description: "예배 시간, 설교 등 교회와 관련된 각종 정보를 빠르게 확인해요.",
+  },
+  {
+    id: "member-app",
+    icon: Smartphone,
+    title: "성도용 앱",
+    description: "휴대폰에서 주보를 보고, 교회 소식을 바로바로 확인해요.",
   },
 ];
 
