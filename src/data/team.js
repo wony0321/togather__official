@@ -2,13 +2,13 @@ export const teamMembers = [
   {
     id: 1,
     name: "임예원",
-    role: "팀장 · 프론트엔드 개발자",
+    role: "PM · 프론트엔드 개발자",
     highlights: [
-      "SaaS 로우코드 플랫폼 프론트엔드 개발 경험",
-      "실시간 스트림 UI · Cypress E2E 테스트 구축 경험",
-      "소셜벤처 창업 · 수상 경험",
+      "소셜벤처 창업 및 수상 경험",
       "SSAFY 800시간 교육 이수",
-      "7년 해외 거주 · 글로벌 커뮤니케이션 역량",
+      "로우코드 플랫폼 개발 경험",
+      "Cypress E2E 테스트 구축 경험",
+      "글로벌 커뮤니케이션 역량 (영국 거주 약 7년)",
       "10인 서포터즈 팀 리딩 경험",
     ],
     image: null,
@@ -18,7 +18,7 @@ export const teamMembers = [
   {
     id: 2,
     name: "김수현",
-    role: "기획 · 프론트엔드",
+    role: "기획자",
     highlights: [
       "계량경제학 학사",
       "마케팅 관련 경험 및 경력 1년 이상",
@@ -31,8 +31,8 @@ export const teamMembers = [
   {
     id: 3,
     name: "임예빈",
-    role: "UI/UX 디자인",
-    highlights: ["경영학 학사", "UI/UX 관련 경험 및 경력 1년 이상", "7년 해외 거주 · 글로벌 커뮤니케이션 역량",],
+    role: "UI/UX 디자이너",
+    highlights: ["경영학 학사", "UI/UX 관련 경험 및 경력 1년 이상", "글로벌 커뮤니케이션 역량 (영국 거주 약 7년)",],
     image: null,
     email: "",
     linkedin: "",
@@ -40,7 +40,7 @@ export const teamMembers = [
   {
     id: 4,
     name: "구석현",
-    role: "백엔드 · AI",
+    role: "백엔드 및 AI 개발자",
     highlights: ["식품생명공학 전공", "컴퓨터공학 부전공"],
     image: null,
     email: "",
@@ -49,7 +49,7 @@ export const teamMembers = [
   {
     id: 5,
     name: "정은결",
-    role: "홍보 및 마케팅",
+    role: "마케터",
     highlights: ["몽골어학과 학사", "마케팅 관련 경험 및 경력 1년 이상"],
     image: null,
     email: "",

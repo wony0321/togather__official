@@ -26,7 +26,7 @@ export const mainFeatures = [
     id: "webapp",
     icon: Globe,
     title: "교회 웹앱",
-    description: "PC와 휴대폰에서 교회 소개와 예배 안내를 볼 수 있어요.",
+    description: "PC와 스마트폰에서 교회 소개와 예배 안내를 볼 수 있어요.",
   },
   {
     id: "bulletin",
@@ -37,8 +37,8 @@ export const mainFeatures = [
   {
     id: "bible-typing",
     icon: BookOpen,
-    title: "성경 타자 (읽기·쓰기)",
-    description: "PC와 휴대폰에서 언제든지 말씀을 읽고, 따라 쓸 수 있어요.",
+    title: "성경 타자",
+    description: "PC와 스마트폰에서 언제든지 말씀을 읽고, 따라 쓸 수 있어요.",
   },
   {
     id: "notice-event",

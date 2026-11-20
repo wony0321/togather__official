@@ -65,7 +65,15 @@ src/
 `.env.local` 파일에 설정:
 ```
 VITE_API_URL=http://localhost:8080/api
+
+# EmailJS (https://dashboard.emailjs.com) - 도입 문의 폼 이메일 발송용
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
 ```
+
+도입 문의 폼(Contact.jsx)은 백엔드 없이 EmailJS(`@emailjs/browser`)로 폼 내용을 바로 이메일 발송한다.
+emailjs.com에서 Email Service와 Template을 만들고 위 세 값을 채워야 동작한다.
 
 ## 데이터 업데이트 위치
 

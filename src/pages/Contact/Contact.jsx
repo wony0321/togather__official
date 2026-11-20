@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import { pricingPlans } from "@/data/pricing";
-import { inquiryApi } from "@/services/api";
+import useUIStore from "@/store/uiStore";
 
 const initialForm = {
   orgName: "",
@@ -24,11 +25,21 @@ const managementMethods = ["엑셀/종이", "다른 교적 프로그램", "따�
 const inquiryTypes = ["상담 신청", "가격·요금 문의", "데모 요청", "기타"];
 
 const inputCls = "w-full px-4 py-2.5 border border-bluegrey-3 rounded-xl text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary";
-const selectCls = `${inputCls} bg-white`;
+const selectCls = `${inputCls} bg-white select-arrow`;
 
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState("idle");
+  const selectedMemberRange = useUIStore((s) => s.selectedMemberRange);
+  const clearSelectedMemberRange = useUIStore((s) => s.clearSelectedMemberRange);
+
+  useEffect(() => {
+    if (!selectedMemberRange) return;
+    // Pricing 섹션의 CTA 클릭으로 들어온 값이라 폼 외부 상태(zustand)와 동기화해야 함
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setForm((prev) => ({ ...prev, memberCount: selectedMemberRange }));
+    clearSelectedMemberRange();
+  }, [selectedMemberRange, clearSelectedMemberRange]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -39,8 +50,28 @@ export default function Contact() {
     e.preventDefault();
     if (!form.privacy) return;
     setStatus("submitting");
+    const orEmpty = (value) => value || "미입력";
     try {
-      await inquiryApi.submit(form);
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          org_name: form.orgName,
+          region: form.region,
+          denomination: orEmpty(form.denomination),
+          member_count: orEmpty(form.memberCount),
+          contact_name: form.contactName,
+          position: orEmpty(form.position),
+          phone: orEmpty(form.phone),
+          email: form.email,
+          plan: orEmpty(form.plan),
+          inquiry_type: orEmpty(form.inquiryType),
+          current_website: orEmpty(form.currentWebsite),
+          current_management_method: orEmpty(form.currentManagementMethod),
+          message: orEmpty(form.message),
+        },
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
       setStatus("success");
       setForm(initialForm);
     } catch {
@@ -101,10 +132,9 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-blue-9 mb-1.5">교인 수</label>
                   <select name="memberCount" value={form.memberCount} onChange={handleChange} className={selectCls}>
                     <option value="">선택해주세요</option>
-                    <option value="~50">50명 이하</option>
-                    <option value="51~100">51~100명</option>
-                    <option value="101~300">101~300명</option>
-                    <option value="301~">300명 이상</option>
+                    {pricingPlans.map((p) => (
+                      <option key={p.id} value={p.memberRange}>교인 {p.memberRange}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -138,11 +168,13 @@ export default function Contact() {
               <div>
                 <label className="block text-sm font-medium text-blue-9 mb-2">관심 요금제</label>
                 <div className="flex flex-wrap gap-3">
-                  {[...pricingPlans.map((p) => p.name), "맞춤형 요금제"].map((plan) => (
-                    <label key={plan} className="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="plan" value={plan} checked={form.plan === plan}
+                  {pricingPlans.map((p) => (
+                    <label key={p.id} className="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="plan" value={p.name} checked={form.plan === p.name}
                         onChange={handleChange} className="accent-primary" />
-                      <span className="text-sm text-blue-8">{plan}</span>
+                      <span className="text-sm text-blue-8">
+                        {p.name} ({p.price.toLocaleString()}원/{p.priceUnit})
+                      </span>
                     </label>
                   ))}
                 </div>

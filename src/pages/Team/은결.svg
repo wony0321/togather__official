@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="800" height="800">
+  <rect width="400" height="400" fill="#F7ECE1"/>
+  <g transform="translate(0,-16)">
+  <!-- back hair -->
+  <path d="M124 150 C112 50 288 50 276 150 L280 244 C284 290 294 318 282 340 C266 354 246 346 238 342 L162 342 C154 346 134 354 120 340 C106 318 116 290 126 244 Z" fill="#26242C"/>
+  <!-- cardigan body -->
+  <path d="M68 430 C70 312 110 282 200 278 C290 282 330 312 332 430 Z" fill="#C3272D"/>
+  <!-- neck -->
+  <path d="M184 200 L216 200 L216 282 Q200 292 184 282 Z" fill="#F4C3AE"/>
+  <path d="M184 214 Q200 230 216 214 L216 228 Q200 240 184 228 Z" fill="#E8B09A"/>
+  <!-- round neckline rib -->
+  <path d="M170 280 Q200 312 230 280" stroke="#A81F25" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <!-- placket + buttons -->
+  <line x1="200" y1="300" x2="200" y2="430" stroke="#A81F25" stroke-width="2.5"/>
+  <circle cx="207" cy="318" r="3.6" fill="#F4E6D6"/>
+  <circle cx="207" cy="346" r="3.6" fill="#F4E6D6"/>
+  <circle cx="207" cy="374" r="3.6" fill="#F4E6D6"/>
+  <circle cx="207" cy="402" r="3.6" fill="#F4E6D6"/>
+  <!-- ears -->
+  <ellipse cx="142" cy="166" rx="10" ry="13" fill="#F4C3AE"/>
+  <ellipse cx="258" cy="166" rx="10" ry="13" fill="#F4C3AE"/>
+  <!-- face -->
+  <ellipse cx="200" cy="160" rx="58" ry="64" fill="#F7CBB7"/>
+  <!-- face features -->
+  <circle cx="181" cy="170" r="3.6" fill="#26242C"/>
+  <circle cx="219" cy="170" r="3.6" fill="#26242C"/>
+  <path d="M199 180 Q196 188 201 189" stroke="#D9967F" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M189 200 Q200 208 211 200" stroke="#9A4F48" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  <!-- hair cap, no bangs, slightly off-center part -->
+  <path d="M128 180 C106 46 294 46 272 180 L256 180 C254 146 238 124 197 114 C170 122 150 142 146 180 Z" fill="#26242C"/>
+  <!-- front side strands -->
+  <path d="M128 140 C122 196 138 236 132 276 C126 306 136 322 130 340 C138 354 156 348 156 334 C150 316 158 294 156 266 C152 224 150 180 160 134 Z" fill="#26242C"/>
+  <path d="M272 140 C278 196 262 236 268 276 C274 306 264 322 270 340 C262 354 244 348 244 334 C250 316 242 294 244 266 C248 224 250 180 240 128 Z" fill="#26242C"/>
+  </g>
+</svg>

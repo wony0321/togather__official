@@ -1,4 +1,5 @@
-import { pricingPlans, commonFeatures } from "@/data/pricing";
+import { pricingPlans } from "@/data/pricing";
+import useUIStore from "@/store/uiStore";
 
 const tierStyle = {
   basic: "bg-blue-1 text-blue-7",
@@ -13,6 +14,8 @@ const tierSweepColor = {
 };
 
 export default function Pricing() {
+  const setSelectedMemberRange = useUIStore((s) => s.setSelectedMemberRange);
+
   return (
     <section id="pricing" className="scroll-mt-16 bg-white">
       <div className="pt-20 px-6">
@@ -63,32 +66,14 @@ export default function Pricing() {
 
                 <a
                   href="#contact"
-                  className="block text-center py-3 rounded-xl font-semibold text-sm bg-blue-1 text-blue-8 hover:bg-blue-2 transition-colors"
+                  onClick={() => setSelectedMemberRange(plan.memberRange)}
+                  className="block text-center py-3 rounded-xl font-semibold text-sm bg-blue-1 text-blue-8 hover:bg-primary hover:text-white transition-colors"
                 >
                   {plan.cta}
                 </a>
               </div>
             ))}
           </div>
-
-          {/* Common features */}
-          <div className="mt-8 p-8 bg-white rounded-2xl border border-bluegrey-2">
-            <h3 className="font-bold text-blue-9 text-lg mb-6 text-center">모든 요금제 공통 제공 기능</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {commonFeatures.map(({ icon: Icon, text }) => (
-                <div
-                  key={text}
-                  className="reveal-card flex flex-col items-center text-center gap-2 p-4 rounded-xl bg-blue-1 hover:bg-blue-2 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
-                    <Icon className="w-5 h-5 text-primary" strokeWidth={1.75} />
-                  </div>
-                  <span className="text-sm font-medium text-blue-8">{text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
       </section>
     </section>

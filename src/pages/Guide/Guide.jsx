@@ -169,7 +169,7 @@ export default function Guide() {
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-blue-10 mb-3">제작을 위해 이런 정보를 준비해 주세요</h2>
             <p className="text-grey-8 max-w-2xl mx-auto">
-              아래 항목을 미리 정리해 주시면 제작이 더 빨라집니다.
+              아래 항목을 미리 정리해 주시면 제작이 더 빨라집니다. <br/>
               입력해 주신 정보는 오픈 이후에도 관리자 페이지에서 언제든 직접 수정할 수 있습니다.
             </p>
             <a

@@ -26,7 +26,7 @@ export default function Home() {
 
         <div className="relative w-full">
           {/* 좌측 장식: 웹 + 앱 겹침 미리보기 (화면 끝까지, 헤드라인 중앙 정렬에 영향 없음) */}
-          <div className="hidden md:block absolute left-0 top-2/3 -translate-y-1/2 w-[42%] -ml-10">
+          <div className="hidden md:block absolute left-0 top-4/5 -translate-y-1/2 w-[42%] -ml-[clamp(4rem,13.5rem_-_10.7vw,8.5rem)]">
             <img
               src="/mockups/web-preview.png"
               alt="ToGather 웹 미리보기"
@@ -50,25 +50,25 @@ export default function Home() {
           {/* 우측 여백: 떠다니는 해시태그 */}
           <div className="hidden lg:block absolute inset-y-0 right-0 w-[26%] pointer-events-none" aria-hidden="true">
             <span
-              className="floating-badge absolute -top-30 right-150 inline-flex items-center px-4 py-2 bg-white border border-blue-2 rounded-full shadow-sm text-lg font-semibold text-primary whitespace-nowrap"
+              className="floating-badge absolute -top-30 right-150 inline-flex items-center px-4 py-2 bg-white border border-blue-1 rounded-full text-lg font-semibold text-primary whitespace-nowrap"
               style={{ animationDelay: "0s" }}
             >
               # 교회 All-in-One 디지털 플랫폼
             </span>
             <span
-              className="floating-badge absolute top-0 right-30 inline-flex items-center px-4 py-2 bg-blue-1 border border-blue-2 rounded-full shadow-sm text-lg font-semibold text-primary whitespace-nowrap"
+              className="floating-badge absolute top-0 right-30 inline-flex items-center px-4 py-2 bg-blue-1 rounded-full text-lg font-semibold text-primary whitespace-nowrap"
               style={{ animationDelay: "0.8s" }}
             >
               # 같이, 가치있게
             </span>
             <span
-              className="floating-badge absolute top-[60%] right-100 inline-flex items-center px-4 py-2 bg-blue-9 rounded-full shadow-sm text-lg font-semibold text-blue-1 whitespace-nowrap"
+              className="floating-badge absolute top-[60%] right-100 inline-flex items-center px-4 py-2 bg-blue-9 rounded-full text-lg font-semibold text-blue-1 whitespace-nowrap"
               style={{ animationDelay: "1.8s" }}
             >
               # 스마트 주보
             </span>
             <span
-              className="floating-badge absolute -bottom-20 right-70 inline-flex items-center px-4 py-2 bg-blue-9 rounded-full shadow-sm text-lg font-semibold text-blue-1 whitespace-nowrap"
+              className="floating-badge absolute -bottom-20 right-70 inline-flex items-center px-4 py-2 bg-blue-9 rounded-full text-lg font-semibold text-blue-1 whitespace-nowrap"
               style={{ animationDelay: "2.8s" }}
             >
               # 교적부
@@ -105,7 +105,7 @@ export default function Home() {
               <h3 className="font-semibold text-primary mb-4 text-lg flex items-center gap-2">
                 ToGather에서는
               </h3>
-              <ul className="space-y-3 text-sm text-blue-8">
+              <ul className="space-y-3 text-blue-8">
                 {[
                   "공지와 일정을 한 번만 등록해요",
                   "행사 안내와 일정을 함께 관리해요",
