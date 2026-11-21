@@ -83,10 +83,10 @@ export default function Header() {
             <a
               key={to}
               href={to}
-              className={`text-sm font-medium transition-colors whitespace-nowrap ${
+              className={`text-sm transition-colors whitespace-nowrap ${
                 activeSection === to.slice(1)
-                  ? "text-primary font-bold"
-                  : "text-grey-8 hover:text-blue-8 hover:font-bold"
+                  ? "text-primary font-semibold"
+                  : "text-grey-8 hover:text-blue-8"
               }`}
             >
               {label}

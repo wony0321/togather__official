@@ -13,7 +13,6 @@ const initialForm = {
   position: "",
   phone: "",
   email: "",
-  plan: "",
   message: "",
   currentWebsite: "",
   currentManagementMethod: "",
@@ -64,7 +63,6 @@ export default function Contact() {
           position: orEmpty(form.position),
           phone: orEmpty(form.phone),
           email: form.email,
-          plan: orEmpty(form.plan),
           inquiry_type: orEmpty(form.inquiryType),
           current_website: orEmpty(form.currentWebsite),
           current_management_method: orEmpty(form.currentManagementMethod),
@@ -81,7 +79,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="scroll-mt-16">
-      <div className="pt-20 px-6 bg-bluegrey-1">
+      <div className="py-20 px-6 bg-bluegrey-1">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-blue-10 mb-4">도입 문의</h1>
@@ -162,21 +160,6 @@ export default function Contact() {
                     이메일 <span className="text-red-400">*</span>
                   </label>
                   <input type="email" name="email" required value={form.email} onChange={handleChange} className={inputCls} />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-blue-9 mb-2">관심 요금제</label>
-                <div className="flex flex-wrap gap-3">
-                  {pricingPlans.map((p) => (
-                    <label key={p.id} className="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="plan" value={p.name} checked={form.plan === p.name}
-                        onChange={handleChange} className="accent-primary" />
-                      <span className="text-sm text-blue-8">
-                        {p.name} ({p.price.toLocaleString()}원/{p.priceUnit})
-                      </span>
-                    </label>
-                  ))}
                 </div>
               </div>
 

@@ -183,7 +183,7 @@ export default function Guide() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {setupInfoCategories.map(({ icon: Icon, title, items }) => (
-              <div key={title} className="reveal-card bg-white rounded-2xl border border-bluegrey-2 p-5">
+              <div key={title} className="reveal-card bg-white rounded-2xl border border-bluegrey-2 shadow-lg p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <Icon className="w-5 h-5 text-primary" strokeWidth={1.75} />
                   <h3 className="font-semibold text-blue-9">{title}</h3>

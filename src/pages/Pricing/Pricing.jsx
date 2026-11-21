@@ -82,7 +82,7 @@ export default function Pricing() {
 
 export function PricingFaq() {
   return (
-    <section className="py-16 px-6 bg-bluegrey-1">
+    <section className="pt-20 pb-30 px-6 bg-white">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold text-blue-10 text-center mb-10">자주 묻는 질문</h2>
         <div className="space-y-4">
@@ -104,7 +104,7 @@ export function PricingFaq() {
               a: "해지 전 데이터 백업 파일을 제공해 드립니다. 데이터는 30일간 보관됩니다.",
             },
           ].map(({ q, a }) => (
-            <div key={q} className="reveal-card bg-white rounded-xl border border-bluegrey-2 p-6">
+            <div key={q} className="reveal-card bg-white rounded-xl border border-bluegrey-3 p-6">
               <h4 className="font-semibold text-blue-9 mb-2">{q}</h4>
               <p className="text-sm text-grey-8">{a}</p>
             </div>

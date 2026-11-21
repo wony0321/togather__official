@@ -1,15 +1,21 @@
 import { teamMembers } from "@/data/team";
 import yewonImage from "./예원.svg";
 import eungyeolImage from "./은결.svg";
+import sukhyeonImage from "./석현.svg";
+import suhyeonImage from "./수현.svg";
+import yebinImage from "./예빈.svg";
 
 const imageOverrides = {
   "임예원": yewonImage,
   "정은결": eungyeolImage,
+  "구석현": sukhyeonImage,
+  "김수현": suhyeonImage,
+  "임예빈": yebinImage,
 };
 
 function MemberCard({ member }) {
   return (
-    <div className="reveal-card flex flex-col items-center text-center gap-3 p-6 rounded-2xl border border-bluegrey-2 hover:border-blue-3 hover:shadow-md transition-all">
+    <div className="reveal-card flex flex-col items-center text-center gap-3 p-6 rounded-2xl border border-bluegrey-2 shadow-lg transition-all">
       {member.image ? (
         <img
           src={member.image}
@@ -61,14 +67,14 @@ export default function Team() {
       {/* Mission & Vision */}
       <section className="py-12 px-6">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-          <div className="reveal-card rounded-2xl py-8 px-4 bg-primary text-center">
-            <h2 className="font-bold text-white text-2xl mb-3">투게더는 연결합니다</h2>
+          <div className="reveal-card rounded-2xl py-8 px-6 bg-primary text-center">
+            <h2 className="font-bold text-white text-xl mb-3">투게더는 연결합니다</h2>
             <p className="text-base text-blue-1 leading-relaxed">
               흩어진 교회 운영을 하나로 모아, 교회와 성도를 연결합니다.
             </p>
           </div>
-          <div className="reveal-card rounded-2xl py-8 px-4 bg-blue-9 text-center">
-            <h2 className="font-bold text-white text-2xl mb-3">투게더는 꿈꿉니다</h2>
+          <div className="reveal-card rounded-2xl py-8 px-6 bg-blue-9 text-center">
+            <h2 className="font-bold text-white text-xl mb-3">투게더는 꿈꿉니다</h2>
             <p className="text-base text-blue-2 leading-relaxed">
               교회가 하나님 안에서 하나 되고, 성도들이 서로 연결되어 함께 세워지는 모습을 꿈꿉니다.
             </p>

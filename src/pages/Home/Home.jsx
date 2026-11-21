@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { X, Check } from "lucide-react";
 import Service from "@/pages/Service/Service";
 import Pricing, { PricingFaq } from "@/pages/Pricing/Pricing";
@@ -5,7 +6,48 @@ import Guide from "@/pages/Guide/Guide";
 import Team from "@/pages/Team/Team";
 import Contact from "@/pages/Contact/Contact";
 
+const HEADLINE_LINE_1 = "교회 운영을 하나로";
+const HEADLINE_LINE_2 = "성도와 더 가까이";
+const TYPING_SPEED_MS = 100;
+const LINE_GAP_MS = 500;
+
+function useTypingHeadline() {
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    let line2Timer;
+    let line2Interval;
+    const line1Interval = setInterval(() => {
+      i += 1;
+      setLine1(HEADLINE_LINE_1.slice(0, i));
+      if (i >= HEADLINE_LINE_1.length) {
+        clearInterval(line1Interval);
+        line2Timer = setTimeout(() => {
+          let j = 0;
+          line2Interval = setInterval(() => {
+            j += 1;
+            setLine2(HEADLINE_LINE_2.slice(0, j));
+            if (j >= HEADLINE_LINE_2.length) clearInterval(line2Interval);
+          }, TYPING_SPEED_MS);
+        }, LINE_GAP_MS);
+      }
+    }, TYPING_SPEED_MS);
+
+    return () => {
+      clearInterval(line1Interval);
+      clearInterval(line2Interval);
+      clearTimeout(line2Timer);
+    };
+  }, []);
+
+  return [line1, line2];
+}
+
 export default function Home() {
+  const [headlineLine1, headlineLine2] = useTypingHeadline();
+
   return (
     <div>
       {/* Hero */}
@@ -30,20 +72,27 @@ export default function Home() {
             <img
               src="/mockups/web-preview.png"
               alt="ToGather 웹 미리보기"
-              className="w-[120%] -ml-20 rounded-r-xl shadow-xl shadow-blue-2 border border-blue-2"
+              className="w-[120%] -ml-15 rounded-r-xl shadow-xl shadow-blue-2 border border-blue-2"
             />
             <img
               src="/mockups/mobile-preview.png"
               alt="ToGather 앱 미리보기"
-              className="absolute -bottom-8 right-6 w-36 rounded-[2rem] shadow-xl shadow-blue-2 border-4 border-blue-10"
+              className="absolute -bottom-15 right-2 w-44 rounded-[2rem]"
             />
           </div>
 
           {/* 헤드라인: 화면 정중앙 */}
           <div className="relative z-10 text-center px-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-10 mb-6 leading-relaxed">
-              교회 운영을 하나로<br />
-              <span className="text-primary">성도와 더 가까이</span>
+            <h1 className="relative text-4xl md:text-5xl font-bold text-blue-10 mb-6 leading-relaxed">
+              {/* 공간 확보용: 최종 텍스트를 보이지 않게 렌더링해 타이핑 중 높이 변화를 막음 */}
+              <span className="invisible" aria-hidden="true">
+                {HEADLINE_LINE_1}<br />
+                <span className="block">{HEADLINE_LINE_2}</span>
+              </span>
+              <span className="absolute inset-0">
+                {headlineLine1}<br />
+                <span className="text-primary">{headlineLine2}</span>
+              </span>
             </h1>
           </div>
 
@@ -90,9 +139,10 @@ export default function Home() {
               </h3>
               <ul className="space-y-3 text-sm text-bluegrey-8">
                 {[
-                  "같은 공지를 채널마다 올렸어요",
-                  "행사 신청 명단을 엑셀로 다시 정리했어요",
-                  "교인 정보를 여러 곳에서 찾아 헤맸어요",
+                  "주보 제작, 웹사이트 제작, 등 여러 외주 업체를 사용했어요",
+                  "교인정보를 한눈에 보기 어려웠어요",
+                  "성도들이 머물고 소통할 수 있는 온라인 공간이 부족했어요",
+                  "노후화된 웹사이트로 인해 원하는 정보를 찾기가 어려웠어요"
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <X className="w-4 h-4 text-grey-6 mt-0.5 shrink-0" strokeWidth={2.5} />
@@ -107,10 +157,11 @@ export default function Home() {
               </h3>
               <ul className="space-y-3 text-blue-8">
                 {[
-                  "공지와 일정을 한 번만 등록해요",
-                  "행사 안내와 일정을 함께 관리해요",
-                  "스마트주보로 주보를 매주 간편하게 제작해요",
-                  "교적부에서 교인 정보를 쉽게 찾고 관리해요",
+                  "스마트주보로 주보를 직접 만들고 모바일로 바로 전달해요",
+                  "웹사이트 내용도 담당자가 직접 쉽게 수정해요",
+                  "모바일 요람으로 성도들을 한눈에 확인해요",
+                  "성경 타자·성경 읽기를 성도들과 함께해요",
+                  "깔끔한 웹사이트에서 원하는 정보를 쉽게 찾아요",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" strokeWidth={2.5} />
