@@ -47,7 +47,7 @@ const sections = [
   },
   {
     title: "7. 개인정보 보호책임자 및 문의처",
-    body: ["이메일: hello@togather.kr"],
+    body: ["이메일: togather2511@gmail.com"],
   },
 ];
 

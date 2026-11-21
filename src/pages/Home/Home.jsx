@@ -96,7 +96,7 @@ export default function Home() {
             </h1>
           </div>
 
-          {/* 우측 여백: 떠다니는 해시태그 */}
+          {/* 우측 여백: 떠다니는 해시태그 (데스크톱) */}
           <div className="hidden lg:block absolute inset-y-0 right-0 w-[26%] pointer-events-none" aria-hidden="true">
             <span
               className="floating-badge absolute -top-30 right-150 inline-flex items-center px-4 py-2 bg-white border border-blue-1 rounded-full text-lg font-semibold text-primary whitespace-nowrap"
@@ -123,6 +123,36 @@ export default function Home() {
               # 교적부
             </span>
           </div>
+
+          {/* 해시태그 (모바일/태블릿): 헤드라인 위 2개는 대각선, 아래 2개는 좌우로 분리 배치 */}
+          <span
+            className="floating-badge lg:hidden pointer-events-none absolute left-4 -top-16 max-w-[45%] whitespace-normal inline-flex items-center px-3 py-1.5 bg-white border border-blue-1 rounded-full text-xs font-semibold text-primary"
+            style={{ animationDelay: "0s" }}
+            aria-hidden="true"
+          >
+            # 교회 All-in-One 디지털 플랫폼
+          </span>
+          <span
+            className="floating-badge lg:hidden pointer-events-none absolute right-4 -top-6 inline-flex items-center px-3 py-1.5 bg-blue-1 rounded-full text-xs font-semibold text-primary whitespace-nowrap"
+            style={{ animationDelay: "0.8s" }}
+            aria-hidden="true"
+          >
+            # 같이, 가치있게
+          </span>
+          <span
+            className="floating-badge lg:hidden pointer-events-none absolute left-4 -bottom-12 inline-flex items-center px-3 py-1.5 bg-blue-9 rounded-full text-xs font-semibold text-blue-1 whitespace-nowrap"
+            style={{ animationDelay: "1.8s" }}
+            aria-hidden="true"
+          >
+            # 스마트 주보
+          </span>
+          <span
+            className="floating-badge lg:hidden pointer-events-none absolute right-4 -bottom-12 inline-flex items-center px-3 py-1.5 bg-blue-9 rounded-full text-xs font-semibold text-blue-1 whitespace-nowrap"
+            style={{ animationDelay: "2.8s" }}
+            aria-hidden="true"
+          >
+            # 교적부
+          </span>
         </div>
       </section>
 

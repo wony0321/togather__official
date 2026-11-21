@@ -72,8 +72,7 @@ export default function Header() {
           }`}
         >
           <Link to="/" className="flex items-center gap-2 shrink-0 whitespace-nowrap" onClick={closeMenu}>
-            <img src="/icons/192x192.png" alt="ToGather" className="w-8 h-8 rounded-lg" />
-            <span className="font-bold text-xl text-primary tracking-tight">ToGather</span>
+            <img src="/icons/logo_symbol_eng.png" alt="ToGather" className="w-35 h-8 rounded-lg" />
           </Link>
         </div>
 

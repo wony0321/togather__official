@@ -28,7 +28,7 @@ export default function Footer() {
             <h4 className="text-white text-sm font-semibold mb-3">회사</h4>
             <ul className="space-y-2 text-sm">
               <li><a href="#team" className="hover:text-white transition-colors">회사 소개</a></li>
-              <li><a href="mailto:hello@togather.kr" className="hover:text-white transition-colors">hello@togather.kr</a></li>
+              <li><a href="mailto:togather2511@gmail.com" className="hover:text-white transition-colors">togather2511@gmail.com</a></li>
             </ul>
           </div>
         </div>

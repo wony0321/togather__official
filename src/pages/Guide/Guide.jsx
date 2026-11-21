@@ -172,14 +172,24 @@ export default function Guide() {
               아래 항목을 미리 정리해 주시면 제작이 더 빨라집니다. <br/>
               입력해 주신 정보는 오픈 이후에도 관리자 페이지에서 언제든 직접 수정할 수 있습니다.
             </p>
-            <a
-              href="/downloads/church-setup-info-request.docx"
-              download="ToGather_교회_초기구축_정보요청서.docx"
-              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-blue-7 transition-colors text-sm"
-            >
-              <Download className="w-4 h-4" strokeWidth={2} />
-              정보요청서 양식 다운로드
-            </a>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="/downloads/church-setup-info-request.docx"
+                download="ToGather_교회_초기구축_정보요청서.docx"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-blue-7 transition-colors text-sm"
+              >
+                <Download className="w-4 h-4" strokeWidth={2} />
+                정보요청서 양식 다운로드 (DOCX)
+              </a>
+              <a
+                href="/downloads/church-setup-info-request.hwp"
+                download="ToGather_교회_초기구축_정보요청서.hwp"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary font-semibold rounded-xl border border-primary hover:bg-blue-1 transition-colors text-sm"
+              >
+                <Download className="w-4 h-4" strokeWidth={2} />
+                정보요청서 양식 다운로드 (HWP)
+              </a>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {setupInfoCategories.map(({ icon: Icon, title, items }) => (
